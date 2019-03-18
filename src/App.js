@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import AddApplicant from './AddApplicant';
+import AddApplicant from './components/AddApplicant';
+import Applicants from './components/Applicants';
+import SignIn from './components/SignIn';
 
 class App extends Component {
 
@@ -12,10 +14,24 @@ class App extends Component {
     ]
   }
 
+ 
+
+  addApplicant = (applicant) => {
+    let id = 4;
+    let applicants = [...this.state.applicants, applicant];
+    this.setState({
+      applicants: applicants
+    })
+   
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-       <AddApplicant />
+       <AddApplicant addApplicant={this.addApplicant}/>
+       <SignIn />
+       <Applicants applicants={this.state.applicants} />
       </div>
     );
   }
