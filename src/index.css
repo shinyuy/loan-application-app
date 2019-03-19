@@ -31,6 +31,7 @@ code {
   background-color:  blueviolet;
   height: 50px;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 h1, h3{
@@ -41,3 +42,16 @@ h1, h3{
   border-radius: 10px;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h2{
+  text-align: center;
+}

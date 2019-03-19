@@ -3,7 +3,7 @@ import React from 'react'
 function Applicants({ applicants }) {
     return (
         <div >
-            <table className="striped">
+            <table className="striped responsive-table">
                 <thead>
                     <tr>
                         <th>Name</th>
