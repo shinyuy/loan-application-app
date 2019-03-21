@@ -3,7 +3,10 @@ import Applicants from './applicants/Applicants';
 import AdminLayout from '../../HOC/AdminLayout';
 
 export default class Dashboard extends Component {
-  
+   
+  validate = (id) =>  {
+
+  } 
 
     state = {
         applicants : [
@@ -22,8 +25,8 @@ export default class Dashboard extends Component {
           minHeight: '100vh',
           flexDirection: 'column',
           flex: '1 0 auto'
-        }} >
-          <Applicants applicants={this.state.applicants} />
+        }}>
+          <Applicants validate={this.validate} applicants={this.state.applicants} />
         </div>
       </AdminLayout>
 

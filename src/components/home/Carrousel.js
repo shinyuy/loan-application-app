@@ -18,9 +18,9 @@ function Carrousel() {
 
     return (
         <div
-            className="carrousel_wrapper"
+            className="carrousel_wrapper hide-on-small-only"
             style={{
-                height: `75vh`,
+                height: `100vh`,
                 overflow: 'hidden'
             }}
         >
@@ -30,7 +30,7 @@ function Carrousel() {
                     <div className="carrousel_image"
                         style={{
                             background: `url(${slide_one})`,
-                            height: `75vh`
+                            height: `100vh`
                         }}
                     >
                        
@@ -40,7 +40,7 @@ function Carrousel() {
                     <div className="carrousel_image"
                         style={{
                             background: `url(${slide_two})`,
-                            height: `75vh`
+                            height: `100vh`
                         }}
                     >
 
@@ -50,7 +50,7 @@ function Carrousel() {
                     <div className="carrousel_image"
                         style={{
                             background: `url(${slide_three})`,
-                            height: `75vh`
+                            height: `100vh`
                         }}
                     >
 

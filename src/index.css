@@ -1,11 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
@@ -93,4 +92,50 @@ h2{
   padding: 10px 70px 0px 70px;
   text-transform: uppercase;
 }
+
+ .features{
+   display : flex;
+  flex-direction : row;
+  margin: 0px 0px 100px 0px;
+  background-color: #303075;
+ clip-path: polygon(0 0, 100% 100%, 0 100%);
+  height: 600px;
+}
+
+.features .textleft{
+  font-size: 25px;
+ 
+ 
+}
+.features .textleft h2, p {
+ color: #fff;
+ padding-top: 30px;
+}
+
+.features .textright { 
+ 
+  width: 100vh;
+  height: 500px;
+  
+}
+.features .textright h2, p {
+  color: #303075;
+  padding-top: 30px;
+}
+
+img {
+  height: 300px;
+  width: 100vh;
+}
+
+
+h2{
+  color:#303075
+}
+ p{
+  font-size: 25px;
+  
+}
+
+
 

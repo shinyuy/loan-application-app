@@ -1,43 +1,105 @@
 import React, { Component } from 'react'
+import axios from "axios";
 
 export default class AddApplicant extends Component {
    
     state = {
-        name: null,
-        age: null,
-        location: null,
-        number: null,
-        amount: null,
-        colateral: null,
-        message: null,
-    }
-
+        data: [],
+          
+            id: 0,
+            name: null,
+            age: null,
+            location: null,
+            phoneNumber: null,
+            amount: null,
+            colateral: null,
+            message: null,
+            intervalIsSet: false,
+            idToDelete: null,
+            idToUpdate: null,
+            objectToUpdate: null
+          
+    
+      };
+    
+    
+     // when component mounts, first thing it does is fetch all existing data in our db
+      // then we incorporate a polling logic so that we can easily see if our db has 
+      // changed and implement those changes into our UI
+     /* componentDidMount() {
+        this.getDataFromDb();
+        if (!this.state.intervalIsSet) {
+          let interval = setInterval(this.getDataFromDb, 1000);
+          this.setState({ intervalIsSet: interval });
+        }
+      }
+    
+      // never let a process live forever 
+      // always kill a process everytime we are done using it
+      componentWillUnmount() {
+        if (this.state.intervalIsSet) {
+          clearInterval(this.state.intervalIsSet);
+          this.setState({ intervalIsSet: null });
+        }
+      }
+    
+    
+       // our first get method that uses our backend api to 
+      // fetch data from our data base
+      getDataFromDb = () => {
+        fetch("http://localhost:5000/api/getData")
+          .then(data => data.json())
+          .then(res => this.setState({ data: res.data }));
+      };*/
+    
+       // our put method that uses our backend api
+      // to create new query into our data base
+      putDataToDB = (name, age, location, phoneNumber, amount, colateral, message) => {
+        let currentIds = this.state.data.map(data => data.id);
+        let idToBeAdded = 0;
+        while (currentIds.includes(idToBeAdded)) {
+          ++idToBeAdded;
+        }
+    
+        axios.post("http://localhost:5000/api/putData", {
+          id: idToBeAdded,
+          name: name,
+          age: age,
+          location: location,
+          phoneNumber: phoneNumber,
+          amount: amount,
+          colateral: colateral,
+          message: message
+        });
+      };
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
+        
     }
 
     handleSubmit = (e) => {
       e.preventDefault();
-      this.props.addApplicant(this.state)
+      this.putDataToDB(this.state);
+      
     }
 
     render() {
         return (
                 <div className='row appform'>
                  <h1>Apply For Loan</h1>
-                    <form onSubmit={this.handleSubmit} className='col s12 center'>
+                    <form onSubmit={(e) => this.handleSubmit(e)} className='col s12 center'>
                         <div className="row">
                             <div className="input-field col s12">
                                 <label htmlFor='name'>Full Names : </label>
-                                <input type='text' placeholder='Enter full names as on ID card here' id='name' onChange={this.handleChange} required/>
+                                <input type='text' placeholder='Enter full names as on ID card here' id='name' onChange={(e) => this.handleChange(e)} required/>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
                                 <label htmlFor='age'>Age : </label>
-                                <input type='number' placeholder='Enter your age here' id='age' onChange={this.handleChange} required/>
+                                <input type='number' placeholder='Enter your age here' id='age' onChange={(e) => this.handleChange(e)} required/>
                             </div>
                         </div>
                         <div className="row">
