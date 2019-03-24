@@ -28,15 +28,16 @@ function AdminNav() {
         backgroundColor: 'blueviolet',
         height: '50px',
         width: '100px',
+        cursor: 'pointer'
     }
 
     const renderItems = () => (
          links.map(link => (
             <Link to={link.linkTo} key={link.title}>
-              <li> <button style={style}>
+               <button style={style}>
                   {link.title}
                   </button>
-              </li>
+             
             </Link>
          ))
     )
@@ -52,11 +53,11 @@ function AdminNav() {
     return (
         <div>
             {renderItems()}
-            <li>
+            <Link>
                <button style={style} onClick={()=> logoutHandler()}>
                 Log out
             </button>  
-            </li>
+            </Link>
             
         </div>
     )

@@ -1,27 +1,22 @@
 import React, { Component } from 'react'
-import axios from "axios";
+import axios from 'axios';
 
 export default class Applicants extends Component {
 
   state = {
     data: [],
-    applicants:
-    {
-      id: 0,
-      name: null,
-      age: null,
-      location: null,
-      phoneNumber: null,
-      amount: null,
-      colateral: null,
-      message: null,
-      intervalIsSet: false,
-      idToDelete: null,
-      idToUpdate: null,
-      objectToUpdate: null
-    }
-
-
+    id: 0,
+    name: null,
+    age: null,
+    location: null,
+    phoneNumber: null,
+    amount: null,
+    colateral: null,
+    message: null,
+    intervalIsSet: false,
+    idToDelete: null,
+    idToUpdate: null,
+    objectToUpdate: null
   };
 
 
@@ -54,26 +49,8 @@ export default class Applicants extends Component {
       .then(res => this.setState({ data: res.data }));
   };
 
-  // our put method that uses our backend api
-  // to create new query into our data base
-  /* putDataToDB = (name, age, location, phoneNumber, amount, colateral, message) => {
-     let currentIds = this.state.data.map(data => data.id);
-     let idToBeAdded = 0;
-     while (currentIds.includes(idToBeAdded)) {
-       ++idToBeAdded;
-     }
- 
-     axios.post("http://localhost:5000/api/putData", {
-       id: idToBeAdded,
-       name: name,
-       age: age,
-       location: location,
-       phoneNumber: phoneNumber,
-       amount: amount,
-       colateral: colateral,
-       message: message
-     });
-   };*/
+
+  
   render() {
 
     const { data } = this.state;

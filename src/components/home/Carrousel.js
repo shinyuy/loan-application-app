@@ -1,65 +1,35 @@
 import React from 'react';
-import Slider from "react-slick";
-//import { red } from '@material-ui/core/colors';
+import { Carousel } from 'react-materialize';
 import slide_one from '../../resources/images/slide_one.jpg';
 import slide_two from '../../resources/images/slide_two.jpg';
 import slide_three from '../../resources/images/slide_three.jpg';
+import { Slider, Slide } from 'react-materialize';
 
 function Carrousel() {
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: true,
-        speed: 1000,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
-
     return (
-        <div
-            className="carrousel_wrapper hide-on-small-only"
-            style={{
-                height: `100vh`,
-                overflow: 'hidden'
-            }}
-        >
-
-            <Slider {...settings}>
-                <div>
-                    <div className="carrousel_image"
-                        style={{
-                            background: `url(${slide_one})`,
-                            height: `100vh`
-                        }}
-                    >
-                       
-                    </div>
-                </div>
-                <div>
-                    <div className="carrousel_image"
-                        style={{
-                            background: `url(${slide_two})`,
-                            height: `100vh`
-                        }}
-                    >
-
-                    </div>
-                </div>
-                <div>
-                    <div className="carrousel_image"
-                        style={{
-                            background: `url(${slide_three})`,
-                            height: `100vh`
-                        }}
-                    >
-
-                    </div>
-                </div>
-            </Slider>
-
-        </div>
+        <Slider>
+            <Slide
+                src={slide_one}
+                fullscreen={true}
+                title="Lets help you reach your goals!">
+                Dian was able to achieve hers.
+  </Slide>
+            <Slide
+                src={slide_two}
+                fullscreen={true}
+                title="With us you can have your own start up"
+                placement="left">
+                Meet young entrepreneurs using our services.
+  </Slide>
+            <Slide
+                src={slide_three}
+                fullscreen={true}
+                title="You can trust us"
+                placement="right">
+                We keep our word, making sure every figure is accurate.
+  </Slide>
+        </Slider>
     )
 }
-
 export default Carrousel;
