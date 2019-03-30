@@ -10,7 +10,8 @@
     "react-materialize": "^2.6.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-slick": "^0.23.2"
+    "react-slick": "^0.23.2",
+    "socket.io-client": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

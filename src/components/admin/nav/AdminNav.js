@@ -52,13 +52,14 @@ function AdminNav() {
 
     return (
         <div>
+            
             {renderItems()}
             <Link>
                <button style={style} onClick={()=> logoutHandler()}>
                 Log out
             </button>  
             </Link>
-            
+            <h1>Dashboard</h1>
         </div>
     )
 }
