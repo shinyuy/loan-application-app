@@ -22,9 +22,9 @@ Save and then run the following within the root folder:
 ### `npm start`
 With all these done correctly, the last command should start all 3 parts of the loan application app, which will print LISTENING ON PORT 5000 and connected to database for the server, then LISTENING ON PORT 4000 and and a random socket.io chat ID for the socketServer, then compiled successfully for the front end.
 
-Within the app click on Apply For Loan on the navbar, fill the form and submit, which sends the information to the server then store in database. To now see applicants information, click on Dashboard on the navbar, which will redirect you to a sign in form, then sign in with `mac@gmail.com` as email, then `marcel` as password, from where you will be allowed access to the Dashboard, where you can see applicants information in a table loaded from a database, and the chat window up through which admins(microfinance workers can collaborate and discuss about applicants and the information provided.
+Within the app click on Apply For Loan on the navbar, fill the form and submit, which sends the information to the server then store in database. To now see applicants information, click on Dashboard on the navbar, which will redirect you to a sign in form, then sign in with `mac@gmail.com` as email, then `marcel` as password, from where you will be allowed access to the Dashboard, where you can see applicants information in a table loaded from a database, and the chat window up through which admins(microfinance workers can collaborate and discuss about applicants and the information provided).
 
 I will please like to say this project is not yet complete, and I am still working on it, to improve the user interface, user experience and general functionality, as well as carry out bug fixes.
 
-I also inturn to add intergrate Trilio SMS functionality on it, through which applicants can get notifications regarding their loan application, as well as other account information.
+I also intend to intergrate Twilio SMS functionality on it, through which applicants can get notifications regarding their loan application, as well as other account information.
 
