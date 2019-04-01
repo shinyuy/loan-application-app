@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Loan Application App
 
-## Available Scripts
+This is the front end part of a loan application web app I am creating with React.JS, and the other 2 parts to this app that come together to work as a full stack web app with React and Node are the Server which also here on my GitHub, at https://github.com/shinyuy/loan-application-app-server and socket.io chat server at https://github.com/shinyuy/loan-application-chat and to get the whole app working in your machine, create a folder with 3 sub folders, by name microfinance(for the front end react app), server(for the Node.js back end) and socketServer(for the socket.io chat server), then within microfinance folder, run the following:
 
-In the project directory, you can run:
+### `git clone https://github.com/shinyuy/loan-application-app.git`
+### `npm install`
+ 
+Then within the server folder, run the following:
+### `git clone https://github.com/shinyuy/loan-application-app-server.git`
+### `npm install`
 
+Then within the socketServer folder, run the following:
+### `git clone https://github.com/shinyuy/loan-application-chat.git`
+### `npm install`
+
+Then within the root folder in which all 3 folders are found run the following:
+### `npm init` and press enter all through to the end.
+### `npm i concurrently` to install concurrently, which makes it possible to start and run all 3 parts of the app.
+Then add the following under scripts in the root folder package.json
+### `"start": "concurrently \"cd server && node server.js\" \"cd microfinance && npm start\" \"cd socketServer && node socketServer.js\"",`
+Save and then run the following within the root folder:
 ### `npm start`
+With all these done correctly, the last command should start all 3 parts of the loan application app, which will print LISTENING ON PORT 5000 and connected to database for the server, then LISTENING ON PORT 4000 and and a random socket.io chat ID for the socketServer, then compiled successfully for the front end.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Within the app click on Apply For Loan on the navbar, fill the form and submit, which sends the information to the server then store in database. To now see applicants information, click on Dashboard on the navbar, which will redirect you to a sign in form, then sign in with `mac@gmail.com` as email, then `marcel` as password, from where you will be allowed access to the Dashboard, where you can see applicants information in a table loaded from a database, and the chat window up through which admins(microfinance workers can collaborate and discuss about applicants and the information provided.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+I will please like to say this project is not yet complete, and I am still working on it, to improve the user interface, user experience and general functionality, as well as carry out bug fixes.
 
-### `npm test`
+I also inturn to add intergrate Trilio SMS functionality on it, through which applicants can get notifications regarding their loan application, as well as other account information.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
