@@ -2,6 +2,7 @@ import React from 'react';
 import AddApplicant from './components/apply/AddApplicant';
 import SignIn from './components/signin/index';
 import Home from './components/home/Home';
+import About from './components/about/About';
 import Dashboard from './components/admin/Dashboard';
 import Layout from './HOC/Layout';
 import { Switch } from 'react-router-dom';
@@ -17,6 +18,7 @@ const Routes = (props) => {
             <Layout>
                 <Switch>
                     <PublicRoutes {...props} restricted={false} exact path='/' component={Home} />
+                    <PublicRoutes {...props} restricted={false} exact path='/about' component={About} />
                     <PublicRoutes {...props} restricted={false} exact path='/apply' component={AddApplicant} />
                     <PublicRoutes {...props} restricted={true} exact path='/sign_in' component={SignIn} />
                     <PrivateRoutes {...props} restricted={true} exact path='/validated_applicants' component={ValidatedApplicants} />

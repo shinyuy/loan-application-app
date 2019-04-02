@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+
 
 export default class Applicants extends Component {
 
@@ -50,7 +50,7 @@ export default class Applicants extends Component {
   };
 
 
-  
+
   render() {
 
     const { data } = this.state;
@@ -71,7 +71,7 @@ export default class Applicants extends Component {
           </thead>
           <tbody>
             {data.length <= 0
-              ? 'No Applicants Available'
+              ? `No Applicants Available`
               : data.map(dat => (
                 <tr key={dat.id}>
                   <td>{dat.name}</td>
@@ -81,12 +81,12 @@ export default class Applicants extends Component {
                   <td>{dat.amount}XAF</td>
                   <td>{dat.colateral}</td>
                   <td>{dat.message}</td>
-                  <button onClick={(id) => { this.props.validate(id) }}
+                  <td> <button onClick={(id) => { this.props.validate(id) }}
                     style={{
                       backgroundColor: 'blueviolet',
                       cursor: 'pointer',
                       borderRadius: '10%'
-                    }}>validate</button>
+                    }}>validate</button></td>
                 </tr>
               ))
             }

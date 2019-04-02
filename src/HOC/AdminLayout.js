@@ -1,12 +1,11 @@
 import React from 'react'
-import AdminNav from '../components/admin/nav/AdminNav';
+
 
 function AdminLayout(props) {
     return (
         <div className=''>
-            
             <div className=''>
-               {props.children}
+                {props.children}
             </div>
         </div>
     );

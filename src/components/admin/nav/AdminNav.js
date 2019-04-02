@@ -54,7 +54,7 @@ function AdminNav() {
         <div>
             
             {renderItems()}
-            <Link>
+            <Link to=''>
                <button style={style} onClick={()=> logoutHandler()}>
                 Log out
             </button>  
