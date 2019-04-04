@@ -3,15 +3,24 @@ import { Link, } from 'react-router-dom';
 
 function NavBar() {
     return (
-        <nav className='nav-wrapper blue darken-3'>
+        <nav className='bck_b_light'>
             <div className='container'>
-                <Link className='brand-logo left' to='/'>XYZ Credit Union</Link>
-                <ul className='right'>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/about'>About Us</Link></li>
-                    <li><Link to='/apply'>Apply For Loan</Link></li>
-                    <li><Link to='/dashboard'>Dashboard</Link></li>
-                </ul>
+                <div className='left'>
+                    <div className='logo'>
+                        <Link to='/'>Credit Union</Link>
+                    </div>
+                </div>
+                <div className='right'>
+                    <div className='top'>
+                        <Link to='/'>Home</Link>
+                        <Link to='/about'>About Us</Link>
+                        <Link to='/apply'>Apply For Loan</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
+                    </div>
+                </div>
+                <div className='bottom'>
+                   <Link to='/signin'>Register/Login</Link> 
+                </div>
             </div>
         </nav>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {Link} from 'react-router-dom';
 
 export default class Applicants extends Component {
 
@@ -74,7 +74,7 @@ export default class Applicants extends Component {
               ? `No Applicants Available`
               : data.map(dat => (
                 <tr key={dat.id}>
-                  <td>{dat.name}</td>
+                  <td><Link to='/applicant'>{dat.name}</Link></td>
                   <td>{dat.age}</td>
                   <td>{dat.location}</td>
                   <td>{dat.phoneNumber}</td>

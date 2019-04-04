@@ -1,6 +1,7 @@
 import React from 'react';
 import Carrousel from './Carrousel';
 import Features from './Features';
+import Location from '../location/index';
 
 function Home() {
     return (
@@ -15,6 +16,7 @@ function Home() {
                 <Carrousel />
             </div>
             <Features />
+            <Location />
         </div>
     )
 }

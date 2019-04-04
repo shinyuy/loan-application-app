@@ -1,34 +1,74 @@
 import React from 'react'
+import FontAwesomeIcon from "@fortawesome/react-fontawesome";
+import faCompass from "@fortawesome/fontawesome-free-solid/faCompass";
+import faPhone from "@fortawesome/fontawesome-free-solid/faPhone";
+import faClock from "@fortawesome/fontawesome-free-solid/faClock";
+import faEnvelope from "@fortawesome/fontawesome-free-solid/faEnvelope";
 
 function Footer() {
     return (
-        <footer className="page-footer blue darken-3" >
-          <div className="container">
-            <div className="row">
-              <div className="col l6 s12">
-                <h5 className="white-text">XYZ Credit Union</h5>
-                <p className="grey-text text-lighten-4"></p>
-              </div>
-              <div className="col l4 offset-l2 s12">
-                <h5 className="white-text">Links</h5>
-                <ul>
-                  <li><a className="grey-text text-lighten-3" href="#!">XYZ Credit Union Branch 1</a></li>
-                  <li><a className="grey-text text-lighten-3" href="#!">XYZ Credit Union Branch 2</a></li>
-                  <li><a className="grey-text text-lighten-3" href="#!">XYZ Credit Union Branch 3</a></li>
-                  <li><a className="grey-text text-lighten-3" href="#!">XYZ Credit Union Branch 4</a></li>
-                </ul>
-              </div>
-            </div>
+      <footer className="bck_b_dark">
+      <div className="container">
+          <div className="logo">
+              Credit Union
           </div>
-          <div className="footer-copyright">
-            <div className="container">
-            © 2019 Copyright Reserved
-            <a className="grey-text text-lighten-4 right" href="#!">Main Branch</a>
-            </div>
+          <div className="wrapper">
+              <div className="left">
+                  <h2>Contact information</h2>
+                  <div className="business_nfo">
+                      <div className="tag">
+                          <FontAwesomeIcon
+                              icon={faCompass}
+                              className="icon"
+                          />
+                          <div className="nfo">
+                              <div>Head Office Address</div>
+                              <div>Commercial Avenue Bda Cameroon</div>
+                          </div>
+                      </div>
+                      <div className="tag">
+                          <FontAwesomeIcon
+                              icon={faPhone}
+                              className="icon"
+                          />
+                          <div className="nfo">
+                              <div>Phone</div>
+                              <div>+237 674809182</div>
+                          </div>
+                      </div>
+                      <div className="tag">
+                          <FontAwesomeIcon
+                              icon={faClock}
+                              className="icon"
+                          />
+                          <div className="nfo">
+                              <div>Working hours</div>
+                              <div>Mon-Fri/ 9am-5pm</div>
+                          </div>
+                      </div>
+                      <div className="tag">
+                          <FontAwesomeIcon
+                              icon={faEnvelope}
+                              className="icon"
+                          />
+                          <div className="nfo">
+                              <div>Email</div>
+                              <div>info@creditunion.com</div>
+                          </div>
+                      </div>
+                  </div>
+              </div> 
+              <div className="left">
+                  <h2>Be the first to know</h2>
+                  <div>
+                      <div>
+                      Let us help you achieve your dreams.
+                      </div>
+                  </div>
+              </div>      
           </div>
-        </footer>
-            
-    )
-}
-
+      </div>
+  </footer>
+);
+};
 export default Footer
