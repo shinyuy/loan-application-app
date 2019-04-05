@@ -10,12 +10,8 @@ function AdminNav() {
             linkTo: '/dashboard'
         },
         {
-            title: 'Validated Applicants',
+            title: 'Validated',
             linkTo: '/validated_applicants'
-        },
-        {
-            title: 'Applicant Information',
-            linkTo: '/applicant'
         },
     ]
 
@@ -25,41 +21,41 @@ function AdminNav() {
         borderBottom: '1px solid #353535',
         margin: '10px',
         borderRadius: '10%',
-        backgroundColor: 'blueviolet',
+        backgroundColor: '#e1ddc3',
         height: '50px',
         width: '100px',
         cursor: 'pointer'
     }
 
     const renderItems = () => (
-         links.map(link => (
+        links.map(link => (
             <Link to={link.linkTo} key={link.title}>
-               <button style={style}>
-                  {link.title}
-                  </button>
-             
+                <button style={style}>
+                    {link.title}
+                </button>
+
             </Link>
-         ))
+        ))
     )
 
     const logoutHandler = () => {
-        firebase.auth().signOut().then(()=>{
+        firebase.auth().signOut().then(() => {
             console.log('Log out successful')
-        },(error)=>{
+        }, (error) => {
             console.log('Error logging out')
         })
     }
 
     return (
         <div>
-            
+            <h1>Dashboard</h1>
             {renderItems()}
             <Link to=''>
-               <button style={style} onClick={()=> logoutHandler()}>
-                Log out
-            </button>  
+                <button style={style} onClick={() => logoutHandler()}>
+                    Log out
+            </button>
             </Link>
-            <h1>Dashboard</h1>
+
         </div>
     )
 }

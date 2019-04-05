@@ -49,7 +49,7 @@ export default class Chat extends Component {
                                     }} >
                                     {this.state.messages.map(message => {
                                         return (
-                                            <div>{message.author}: {message.message}</div>
+                                            <div><span className='chat'>{message.author}</span>: {message.message}</div>
                                         )
                                     })}
                                 </div>
@@ -60,7 +60,7 @@ export default class Chat extends Component {
                                 <br />
                                 <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={e => this.setState({ message: e.target.value })} />
                                 <br />
-                                <button onClick={this.sendMessage} className="btn" style={{backgroundColor: 'blueviolet'}} >Send</button>
+                                <button onClick={this.sendMessage} className="btn" style={{backgroundColor: ' #e1ddc3'}} >Send</button>
                             </div>
                         </div>
                     </div>

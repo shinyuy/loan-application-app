@@ -47,8 +47,8 @@ export default class Applicants extends Component {
     fetch("http://localhost:5000/api/getData")
       .then(data => data.json())
       .then(res => this.setState({ data: res.data }));
+      console.log(this.state.data);
   };
-
 
 
   render() {
@@ -70,24 +70,25 @@ export default class Applicants extends Component {
             </tr>
           </thead>
           <tbody>
+            
             {data.length <= 0
               ? `No Applicants Available`
               : data.map(dat => (
-                <tr key={dat.id}>
-                  <td><Link to='/applicant'>{dat.name}</Link></td>
+                 <tr key={dat.id}>
+                  <td>{dat.name}</td>
                   <td>{dat.age}</td>
                   <td>{dat.location}</td>
                   <td>{dat.phoneNumber}</td>
                   <td>{dat.amount}XAF</td>
                   <td>{dat.colateral}</td>
                   <td>{dat.message}</td>
-                  <td> <button onClick={(id) => { this.props.validate(id) }}
+                  <td> <button
                     style={{
-                      backgroundColor: 'blueviolet',
+                      backgroundColor: '#e1ddc3',
                       cursor: 'pointer',
                       borderRadius: '10%'
-                    }}>validate</button></td>
-                </tr>
+                    }}><Link  to={'/applicant/' + dat.id}>More Info</Link></button></td>
+                </tr> 
               ))
             }
           </tbody>

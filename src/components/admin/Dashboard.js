@@ -3,7 +3,9 @@ import Applicants from './applicants/Applicants';
 import AdminLayout from '../../HOC/AdminLayout';
 import Chat from './adminchat/Chat';
 import AdminNav from './nav/AdminNav';
-import { Row, Col } from 'react-materialize';
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default class Dashboard extends Component {
 
@@ -11,19 +13,14 @@ export default class Dashboard extends Component {
   render() {
     return (
       <AdminLayout>
+        <Row>
+          <Col md={4}><AdminNav /></Col>
+          <Col md={{ span: 4, offset: 4 }}><Chat /></Col>
+        </Row>
 
-        
-          <Row>
-          <Col s={6} className='grid-example'><AdminNav /></Col>
-          <Col s={6} className='grid-example'><Chat /></Col>
-          </Row>
-              
-          
-          <div style={{ marginTop: '50px' }}>
-           <Applicants />
-          </div>
-
-        
+        <div style={{ marginTop: '50px' }}>
+          <Applicants />
+        </div>
       </AdminLayout>
     )
   }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
@@ -28,14 +26,14 @@ export default class AddApplicant extends Component {
         objectToUpdate: null
     };
 
-    putDataToDB = (name, age, location, phoneNumber, amount, colateral, message) => {
+    putDataToDB = (name, email, age, location, region, city, street, phoneNumber, amount, colateral, message) => {
 
         let currentIds = this.state.data.map(data => data.id);
         let idToBeAdded = 0;
         while (currentIds.includes(idToBeAdded)) {
             ++idToBeAdded;
         }
-
+        console.log(this.state);
         axios.post("http://localhost:5000/api/putData", {
             id: idToBeAdded,
             name: this.state.name,
@@ -56,7 +54,7 @@ export default class AddApplicant extends Component {
         this.setState({
             [e.target.id]: e.target.value
         })
-
+       
     }
 
     handleSubmit = (e) => {
@@ -69,55 +67,38 @@ export default class AddApplicant extends Component {
         const { name, email, age, location, region, city, street, phoneNumber, amount, colateral, message } = this.state;
         return (
             <Container style={{ paddingTop: '150px', paddingBottom: '150px' }}>
-            <Row>
-               <h2>Fill the form below correctly and submit, and we will get back to you soonest.</h2> 
-            </Row>
-                <Form onSubmit={this.handleSubmit}>
-
-                    <Form.Group controlId="name">
-                        <Form.Label>Full Names</Form.Label>
-                        <Form.Control value={name} id='name' name='name' onChange={this.handleChange} required placeholder="Enter full names as on ID card" />
-                    </Form.Group>
-
-                    <Form.Row>
-
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email"value={email} id='email' name='email'  onChange={this.handleChange} placeholder="Enter email" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label>Phone</Form.Label>
-                            <Form.Control type="number" value={phoneNumber} id='phoneNumber' name='phoneNumber' onChange={this.handleChange} required placeholder="Enter phone number" />
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
-
-                        <Form.Group as={Col} controlId="">
-                            <Form.Label>
-                                Date of Birth
-                           </Form.Label>
-                            <Form.Control type="date" value={age} id='age' name='age' onChange={this.handleChange} required  placeholder="Choose your date of birth" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="">
-                            <Form.Label>
-                                Amount Requested
-                               </Form.Label>
-                            <Form.Control type="number" value={amount} id='amount' name='amount' onChange={this.handleChange} required placeholder="Enter amount requested" />
-                        </Form.Group>
-
-                    </Form.Row>
-
-                    <Form.Group controlId="formGridAddress1">
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control value={location} id='location' name='location' onChange={this.handleChange} required placeholder="Enter address here" />
-                    </Form.Group>
-
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>Region</Form.Label>
-                            <Form.Control as="select" value={region} onChange={this.handleChange} id='region' name='region' required>
+                <Row>
+                    <h2>Fill the form below correctly and submit, and we will get back to you soonest.</h2>
+                </Row>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor='name'>Full Names</label>
+                    <input className="form-control" type='text' value={name} id='name' name='name' onChange={this.handleChange} required placeholder="Enter full names as on ID card" />
+                    <Row>
+                        <Col>
+                            <label htmlFor='email'>Email</label>
+                            <input className="form-control" type="email" value={email} id='email' name='email' onChange={this.handleChange} placeholder="Enter email" />
+                        </Col>
+                        <Col>
+                            <label htmlFor='number'>Phone</label>
+                            <input className="form-control" type="number" value={phoneNumber} id='phoneNumber' name='phoneNumber' onChange={this.handleChange} required placeholder="Enter phone number" />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <label htmlFor='age'>Age</label>
+                            <input className="form-control" type="number" value={age} id='age' name='age' onChange={this.handleChange} required placeholder="Choose your date of birth" />
+                        </Col>
+                        <Col>
+                            <label>Amount Requested</label>
+                            <input className="form-control" type="number" value={amount} id='amount' name='amount' onChange={this.handleChange} required placeholder="Enter amount requested" />
+                        </Col>
+                    </Row>
+                    <label htmlFor='location'>Address</label>
+                    <input className="form-control" value={location} id='location' name='location' onChange={this.handleChange} required placeholder="Enter address here" />
+                    <Row>
+                        <Col>
+                            <label htmlFor='region'>Region</label>
+                            <select className="form-control" value={region.option} onChange={this.handleChange} id='region' name='region' required>
                                 <option>Choose region</option>
                                 <option>North West</option>
                                 <option>South West</option>
@@ -129,34 +110,23 @@ export default class AddApplicant extends Component {
                                 <option>Far North</option>
                                 <option>Adamawa</option>
                                 <option>South</option>
-                            </Form.Control>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control value={city} id='city' name='city' onChange={this.handleChange} required/>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Street</Form.Label>
-                            <Form.Control value={street} id='street' name='street' onChange={this.handleChange} required />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Why do you need this laon?</Form.Label>
-                        <Form.Control as="textarea" rows="3" value={message} id='message' name='message' onChange={this.handleChange} required placeholder="Tell us briefly why you need this loan" />
-                    </Form.Group>
-
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>What do you have as a colateral?</Form.Label>
-                        <Form.Control as="textarea" rows="3" value={colateral} id='colateral' name='colateral' onChange={this.handleChange} required placeholder="Tell us briefly about any colateral property that will make you pay this loan in time" />
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                        Submit Application
-                           </Button>
-                </Form>
+                            </select>
+                        </Col>
+                        <Col>
+                            <label htmlFor='city'>City</label>
+                            <input className="form-control" value={city} id='city' name='city' onChange={this.handleChange} required />
+                        </Col>
+                        <Col>
+                            <label htmlFor='street'>Street</label>
+                            <input className="form-control" value={street} id='street' name='street' onChange={this.handleChange} required />
+                        </Col>
+                    </Row>
+                    <label htmlFor='message'>Why do you need this laon?</label>
+                    <textarea className="form-control" rows="5" value={message} id='message' name='message' onChange={this.handleChange} required placeholder="Tell us briefly why you need this loan" />
+                    <label htmlFor='colateral'>What do you have as a collateral?</label>
+                    <textarea className="form-control" rows="3" value={colateral} id='colateral' name='colateral' onChange={this.handleChange} required placeholder="Tell us briefly about any colateral property that will make you pay this loan in time" />
+                    <button type="submit" className="btn btn-secondary" style={{ marginTop: '20px' }}>Submit Application</button>
+                </form>
             </Container>
         )
     }
