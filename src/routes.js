@@ -13,7 +13,7 @@ import ValidatedApplicants from './components/admin/validated/ValidatedApplicant
 import Applicant from './components/admin/applicant/Applicant';
 
 const Routes = (props) => {
-
+   
     return (
         <div className='APP'>
             <Layout>
@@ -24,7 +24,7 @@ const Routes = (props) => {
                     <PublicRoutes {...props} restricted={true} exact path='/sign_in' component={SignIn} />
                     <PrivateRoutes {...props} restricted={true} exact path='/validated_applicants' component={ValidatedApplicants} />
                     <PrivateRoutes {...props} restricted={true} exact path='/dashboard' component={Dashboard} />
-                    <PrivateRoutes {...props} restricted={true} exact path='/applicant/:dat_id' component={Applicant} />
+                    <PrivateRoutes {...props} restricted={true} exact path='/applicant/:_id' component={Applicant} />
                     <PublicRoutes  {...props} restricted={false} component={NotFound} />
                 </Switch>
             </Layout>

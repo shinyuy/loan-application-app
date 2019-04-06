@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default class Applicants extends Component {
 
   state = {
     data: [],
-    id: 0,
     name: null,
     age: null,
     location: null,
@@ -44,10 +44,10 @@ export default class Applicants extends Component {
   // our first get method that uses our backend api to 
   // fetch data from our data base
   getDataFromDb = () => {
-    fetch("http://localhost:5000/api/getData")
-      .then(data => data.json())
-      .then(res => this.setState({ data: res.data }));
-      console.log(this.state.data);
+    axios.get("http://localhost:5000/api/getData")
+      .then(res => this.setState({ data: res.data }))
+      .catch(function (error) { console.log(error) })
+    console.log(this.state.data);
   };
 
 
@@ -70,26 +70,27 @@ export default class Applicants extends Component {
             </tr>
           </thead>
           <tbody>
-            
             {data.length <= 0
               ? `No Applicants Available`
-              : data.map(dat => (
-                 <tr key={dat.id}>
-                  <td>{dat.name}</td>
-                  <td>{dat.age}</td>
-                  <td>{dat.location}</td>
-                  <td>{dat.phoneNumber}</td>
-                  <td>{dat.amount}XAF</td>
-                  <td>{dat.colateral}</td>
-                  <td>{dat.message}</td>
-                  <td> <button
-                    style={{
-                      backgroundColor: '#e1ddc3',
-                      cursor: 'pointer',
-                      borderRadius: '10%'
-                    }}><Link  to={'/applicant/' + dat.id}>More Info</Link></button></td>
-                </tr> 
-              ))
+              : data.data.map(function (dat, i) {
+                return (
+                  <tr key={i}>
+                    <td>{dat.name}</td>
+                    <td>{dat.age}</td>
+                    <td>{dat.location}</td>
+                    <td>{dat.phoneNumber}</td>
+                    <td>{dat.amount}XAF</td>
+                    <td>{dat.colateral}</td>
+                    <td>{dat.message}</td>
+                    <td> <button
+                      style={{
+                        backgroundColor: '#e1ddc3',
+                        cursor: 'pointer',
+                        borderRadius: '10%'
+                      }}><Link to={'/applicant/' + dat._id}>More Info</Link></button></td>
+                  </tr>
+                )
+              })
             }
           </tbody>
         </table>
