@@ -100,4 +100,3 @@ export default class Applicants extends Component {
   }
 
 }
-

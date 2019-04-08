@@ -3,6 +3,7 @@ import axios from "axios";
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import File from './File';
 
 export default class AddApplicant extends Component {
 
@@ -19,6 +20,7 @@ export default class AddApplicant extends Component {
         amount: '',
         colateral: '',
         message: '',
+        images: [],
         validated: false,
         intervalIsSet: false,
         idToDelete: null,
@@ -40,7 +42,8 @@ export default class AddApplicant extends Component {
             amount: this.state.amount,
             colateral: this.state.colateral,
             message: this.state.message,
-            validated: this.state.validated
+            validated: this.state.validated,
+            images: this.state.images
         })
             .then(res => console.log(res.data));
         this.setState({
@@ -55,6 +58,7 @@ export default class AddApplicant extends Component {
             amount: '',
             colateral: '',
             message: '',
+            images: [],
             validated: false,
             intervalIsSet: false,
             idToDelete: null,
@@ -76,6 +80,16 @@ export default class AddApplicant extends Component {
         this.putDataToDB(this.state);
     }
 
+
+    imagesHandler = (images) => {
+
+        this.setState({
+            images: images
+        });
+        console.log(this.state);
+    }
+
+
     render() {
         const { name, email, age, location, region, city, street, phoneNumber, amount, colateral, message } = this.state;
         return (
@@ -83,9 +97,16 @@ export default class AddApplicant extends Component {
                 <Row>
                     <h2>Fill the form below correctly and submit, and we will get back to you soonest.</h2>
                 </Row>
+
+                <Row>
+                    <File imagesHandler={(images) => this.imagesHandler(images)}
+                        reset={this.state.formSuccess} />
+                </Row>
+
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Full Names</label>
                     <input className="form-control" type='text' value={name} id='name' name='name' onChange={this.handleChange} required placeholder="Enter full names as on ID card" />
+
                     <Row>
                         <Col>
                             <label htmlFor='email'>Email</label>
@@ -140,6 +161,7 @@ export default class AddApplicant extends Component {
                     <textarea className="form-control" rows="3" value={colateral} id='colateral' name='colateral' onChange={this.handleChange} required placeholder="Tell us briefly about any colateral property that will make you pay this loan in time" />
                     <button type="submit" className="btn btn-secondary" style={{ marginTop: '20px' }}>Submit Application</button>
                 </form>
+
             </Container>
         )
     }

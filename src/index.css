@@ -98,6 +98,32 @@ tr:nth-child(even) {
 }
 
 
+.dropzone {
+  border: 1px solid #e5e5e5;
+  margin-bottom: 40px;
+}
+
+.dropzone_box {
+  float: left;
+  width: 25%;
+  width: 160px;
+  height: 160px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.dropzone_box  .wrap {
+  background: #eaeaea;
+  height: 100%;
+  text-align: center;
+  padding-top: 31px;
+  box-sizing: border-box;
+  font-size: 49px;
+  background-size: contain !important;
+  background-position: center center !important;
+  border: 1px solid #eaeaea;
+}
+
 
 
 /*============================

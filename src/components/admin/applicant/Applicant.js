@@ -42,7 +42,13 @@ export default class Applicant extends Component {
               <div><span className='chat'>Reason For Loan</span>:    {this.state.data.data.message}</div><br />
             </Col>
             <Col xs={6} md={4}>
-              <div><span className='chat'>Supporting Documents</span>:  {this.state.data.data.documents} </div>
+              <div className='wrap'>
+                <div><span className='chat'>Supporting Documents</span>:
+                <div>
+                    <img src={this.state.data.data.images[0].url} alt='documents' />
+                  </div>
+                </div>
+              </div>
             </Col>
           </Row>
         </Container>
