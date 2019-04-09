@@ -88,11 +88,12 @@ export default class File extends Component {
             <div>
                 <section>
                    <div className='dropzone clear'>
+                 
                 <Dropzone
                 onDrop = {(e)=>this.onDrop(e)}
                 multiple={false}
                 className='dropzone_box'
-                >
+                > Click on the plus sign to upload a scanned copy of your national ID card.
                 <div>
                     <FontAwesomeIcon 
                     icon={faPlusCircle}

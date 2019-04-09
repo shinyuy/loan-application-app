@@ -31,7 +31,7 @@ export default class AddApplicant extends Component {
     putDataToDB = (name, email, age, location, region, city, street, phoneNumber, amount, colateral, message) => {
         console.log(this.state);
         axios.post("http://localhost:5000/api/putData", {
-            name: this.state.name,
+            name:this.state.name,
             email: this.state.email,
             age: this.state.age,
             location: this.state.location,

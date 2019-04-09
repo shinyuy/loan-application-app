@@ -7,11 +7,10 @@ import axios from 'axios';
 export default class Applicant extends Component {
 
   state = {
-    data: null
+    data: null  
   }
 
   componentDidMount() {
-    console.log(this.props);
     let id = this.props.match.params._id;
     axios.get("http://localhost:5000/api/getData/" + id)
       .then(res => {
@@ -22,6 +21,27 @@ export default class Applicant extends Component {
       });
   }
 
+  validate = (e) => {
+    let id = this.props.match.params._id;
+    let validateToTrue = true;
+    console.log(validateToTrue)
+    axios.post("http://localhost:5000/api/updateData/" + id, {
+      name: this.state.data.data.name,
+      email: this.state.data.data.email,
+      age: this.state.data.data.age,
+      location: this.state.data.data.location,
+      region: this.state.data.data.region,
+      city: this.state.data.data.city,
+      street: this.state.data.data.street,
+      phoneNumber: this.state.data.data.phoneNumber,
+      amount: this.state.data.data.amount,
+      colateral: this.state.data.data.colateral,
+      message: this.state.data.data.message,
+      validated: validateToTrue,
+      images: this.state.data.data.images
+    })
+    .then(res => console.log(res.data)); 
+  }
 
 
   render() {
@@ -51,6 +71,11 @@ export default class Applicant extends Component {
               </div>
             </Col>
           </Row>
+          {
+            this.state.data.data.validated === true  ? ( <button className="btn btn-success" disabled>Validated</button>)
+            :( <button className="btn btn-primary" onClick={this.validate}>Validate</button>)
+          }
+         
         </Container>
       </div>
     ) :
@@ -58,7 +83,7 @@ export default class Applicant extends Component {
         <div>Loading Applicant's Information...</div>
       )
     return (
-      <div style={{ minHeight: '100vh', paddingTop: '150px' }}>
+      <div style={{ minHeight: '100vh', paddingTop: '150px', paddingBottom:'150px' }}>
         {data}
       </div >
     )
