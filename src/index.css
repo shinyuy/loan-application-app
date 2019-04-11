@@ -264,3 +264,15 @@ footer .business_nfo .nfo {
   padding: 15px 20px;
   text-align: center;
 }
+
+
+/*====================
+        LOCATION    
+======================*/
+
+
+ /* This is a CSS style sheet: it adds style to the program output */
+.output { font-weight: bold; } /* Calculated values in bold */
+#payment { text-decoration: underline; } /* For element with id="payment" */
+#graph { border: solid black 1px; } /* Chart has a simple border */
+th, td { vertical-align: top; } /* Don't center table cells */

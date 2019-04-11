@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Row from 'react-bootstrap/Row';
 
 export default class Applicants extends Component {
 
@@ -26,7 +27,7 @@ export default class Applicants extends Component {
   componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
+      let interval = setInterval(this.getDataFromDb, 600000);
       this.setState({ intervalIsSet: interval });
     }
   }
@@ -57,7 +58,8 @@ export default class Applicants extends Component {
 
     return (
       <div>
-        <table className="striped responsive-table">
+        <Row>
+        <table className="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -71,7 +73,7 @@ export default class Applicants extends Component {
           </thead>
           <tbody>
             {data.length <= 0
-              ? `No Applicants Available`
+              ? `Loading Applicants...`
               : data.data.map(function (dat, i) {
                 return (
                   <tr key={i}>
@@ -94,6 +96,7 @@ export default class Applicants extends Component {
             }
           </tbody>
         </table>
+        </Row>
       </div>
     )
 

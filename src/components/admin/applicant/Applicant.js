@@ -41,6 +41,10 @@ export default class Applicant extends Component {
       images: this.state.data.data.images
     })
     .then(res => console.log(res.data)); 
+    setTimeout(()=> {
+         this.props.history.push('/dashboard');
+    }, 2000);
+   
   }
 
 
