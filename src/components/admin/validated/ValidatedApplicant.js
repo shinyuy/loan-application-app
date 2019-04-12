@@ -27,10 +27,8 @@ export default class ValidatedApplicant extends Component {
             });
     }
 
-    validate = (e) => {
+    handleSubmit = ( loanAmount,annualInterest,repaymentPeriod,monthlyPayment,totalPayment,totalInterest) => {
         let id = this.props.match.params._id;
-        let validateToTrue = true;
-        console.log(validateToTrue)
         axios.post("http://localhost:5000/api/updateData/" + id, {
             name: this.state.data.data.name,
             email: this.state.data.data.email,
@@ -43,16 +41,19 @@ export default class ValidatedApplicant extends Component {
             amount: this.state.data.data.amount,
             colateral: this.state.data.data.colateral,
             message: this.state.data.data.message,
-            validated: validateToTrue,
-            images: this.state.data.data.images
+            validated: this.state.data.data.validated,
+            images: this.state.data.data.images,
+            loanAmount: loanAmount,
+            annualInterest: annualInterest,
+            repaymentPeriod: repaymentPeriod,
+            monthlyPayment: monthlyPayment,
+            totalPayment: totalPayment,
+            totalInterest: totalInterest
         })
             .then(res => console.log(res.data));
         setTimeout(() => {
-            this.props.history.push('/dashboard');
+            this.props.history.push('/validated_applicants');
         }, 2000);
-
-    }
-    handleSubmit = (e) => {
 
     }
 
@@ -77,7 +78,7 @@ export default class ValidatedApplicant extends Component {
                     </Col>
 
                     <Col xs={12} md={7}>
-                       <LoanCalculator />
+                       <LoanCalculator handleSubmit={this.handleSubmit} />
                     </Col>
                 </Row>
                 <Row>

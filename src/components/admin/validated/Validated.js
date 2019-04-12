@@ -19,7 +19,6 @@ export default class Validated extends Component {
     objectToUpdate: null
   };
 
-
   // when component mounts, first thing it does is fetch all existing data in our db
   // then we incorporate a polling logic so that we can easily see if our db has 
   // changed and implement those changes into our UI
@@ -81,9 +80,9 @@ export default class Validated extends Component {
                     <td>{dat.loanAmount}</td>
                     <td>{dat.annualInterest}</td>
                     <td>{dat.repaymentPeriod}</td>
-                    <td>{dat.monthlyPayment}</td>
                     <td>{dat.totalPayment}</td>
                     <td>{dat.totalInterest}</td>
+                    <td>{dat.monthlyPayment}</td>
                     <td> <button
                       style={{
                         backgroundColor: '#e1ddc3',
