@@ -25,13 +25,14 @@ export default class AddApplicant extends Component {
         intervalIsSet: false,
         idToDelete: null,
         idToUpdate: null,
-        objectToUpdate: null
+        objectToUpdate: null,
+        success: false
     };
 
     putDataToDB = (name, email, age, location, region, city, street, phoneNumber, amount, colateral, message) => {
         console.log(this.state);
         axios.post("http://localhost:5000/api/putData", {
-            name:this.state.name,
+            name: this.state.name,
             email: this.state.email,
             age: this.state.age,
             location: this.state.location,
@@ -63,7 +64,8 @@ export default class AddApplicant extends Component {
             intervalIsSet: false,
             idToDelete: null,
             idToUpdate: null,
-            objectToUpdate: null
+            objectToUpdate: null,
+            success: true
         })
     };
 
@@ -95,6 +97,8 @@ export default class AddApplicant extends Component {
         return (
             <Container style={{ paddingTop: '150px', paddingBottom: '150px' }}>
                 <Row>
+                    <div style={{ color: 'green' }}>{this.state.success === true ? ('Congratulations, your application for a loan has been successfully submitted, we will review it and get back to you soonest') :
+                        ''}</div>
                     <h2>Fill the form below correctly and submit, and we will get back to you soonest.</h2>
                 </Row>
 
@@ -161,7 +165,8 @@ export default class AddApplicant extends Component {
                     <textarea className="form-control" rows="3" value={colateral} id='colateral' name='colateral' onChange={this.handleChange} required placeholder="Tell us briefly about any colateral property that will make you pay this loan in time" />
                     <button type="submit" className="btn btn-secondary" style={{ marginTop: '20px' }}>Submit Application</button>
                 </form>
-
+                <div style={{ color: 'green' }}>{this.state.success === true ? ('Congratulations, your application for a loan has been successfully submitted, we will review it and get back to you soonest') :
+                    ''}</div>
             </Container>
         )
     }
