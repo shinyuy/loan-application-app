@@ -7,7 +7,7 @@ import axios from 'axios';
 export default class Applicant extends Component {
 
   state = {
-    data: null  
+    data: null
   }
 
   componentDidMount() {
@@ -24,7 +24,6 @@ export default class Applicant extends Component {
   validate = (e) => {
     let id = this.props.match.params._id;
     let validateToTrue = true;
-    console.log(validateToTrue)
     axios.post("http://localhost:5000/api/updateData/" + id, {
       name: this.state.data.data.name,
       email: this.state.data.data.email,
@@ -40,11 +39,11 @@ export default class Applicant extends Component {
       validated: validateToTrue,
       images: this.state.data.data.images
     })
-    .then(res => console.log(res.data)); 
-    setTimeout(()=> {
-         this.props.history.push('/dashboard');
+      .then(res => console.log(res.data));
+    setTimeout(() => {
+      this.props.history.push('/dashboard');
     }, 2000);
-   
+
   }
 
 

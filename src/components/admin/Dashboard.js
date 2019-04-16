@@ -17,7 +17,6 @@ export default class Dashboard extends Component {
           <Col md={4}><AdminNav /></Col>
           <Col md={{ span: 4, offset: 4 }}><Chat /></Col>
         </Row>
-
         <div style={{ marginTop: '50px' }}>
           <Applicants />
         </div>

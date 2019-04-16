@@ -19,7 +19,7 @@ function NavBar() {
                     </div>
                 </div>
                 <div className='bottom'>
-                   <Link to='/signin'>Register/Login</Link> 
+                   <Link to='/signin'></Link> 
                 </div>
             </div>
         </nav>

@@ -47,7 +47,7 @@ function AdminNav() {
     }
 
     return (
-        <div>
+        <div style={{marginTop: '50px'}}>
             <h1>Dashboard</h1>
             {renderItems()}
             <Link to=''>
