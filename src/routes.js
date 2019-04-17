@@ -12,6 +12,7 @@ import PublicRoutes from './components/auth/PublicRoutes';
 import Validated from './components/admin/validated/Validated';
 import Applicant from './components/admin/applicant/Applicant';
 import ValidatedApplicant from './components/admin/validated/ValidatedApplicant';
+import Contact from './components/contact/Contact';
 
 const Routes = (props) => {
    
@@ -20,6 +21,7 @@ const Routes = (props) => {
             <Layout>
                 <Switch>
                     <PublicRoutes {...props} restricted={false} exact path='/' component={Home} />
+                    <PublicRoutes {...props} restricted={false} exact path='/contact' component={Contact} />
                     <PublicRoutes {...props} restricted={false} exact path='/about' component={About} />
                     <PublicRoutes {...props} restricted={false} exact path='/apply' component={AddApplicant} />
                     <PublicRoutes {...props} restricted={true} exact path='/sign_in' component={SignIn} />

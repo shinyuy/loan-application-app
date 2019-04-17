@@ -15,7 +15,7 @@ function NavBar() {
                         <Link to='/'>Home</Link>
                         <Link to='/about'>About Us</Link>
                         <Link to='/apply'>Apply For Loan</Link>
-                        <Link to='/dashboard'>Dashboard</Link>
+                        <Link to='/contact'>Contact Us</Link>
                     </div>
                 </div>
                 <div className='bottom'>
