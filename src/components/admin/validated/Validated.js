@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import AdminNav from '../../admin/nav/AdminNav';
+import Chat from '../adminchat/Chat';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default class Validated extends Component {
   state = {
@@ -56,6 +60,10 @@ export default class Validated extends Component {
 
     return (
       <div style={{minHeight: '100vh', paddingTop : '50px', paddingBottom: '100px'}}>
+        <Row>
+          <Col md={4}><AdminNav /></Col>
+          <Col md={{ span: 4, offset: 4 }}><Chat /></Col>
+        </Row>
         <table className="table">
           <thead>
             <tr>
