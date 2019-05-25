@@ -26,7 +26,8 @@ export default class AddApplicant extends Component {
         idToDelete: null,
         idToUpdate: null,
         objectToUpdate: null,
-        success: false
+        success: false,
+		errorMessage: false
     };
 
     putDataToDB = (name, email, age, location, region, city, street, phoneNumber, amount, colateral, message) => {
@@ -46,8 +47,8 @@ export default class AddApplicant extends Component {
             validated: this.state.validated,
             images: this.state.images
         })
-            .then(res => console.log(res.data));
-        this.setState({
+            .then(res => {
+				 this.setState({
             name: '',
             email: '',
             age: '',
@@ -67,6 +68,15 @@ export default class AddApplicant extends Component {
             objectToUpdate: null,
             success: true
         })
+			})
+			.catch(error => {
+        console.log(error);
+        this.setState({
+          errorMessage: true
+        });
+      });
+			
+       
     };
 
     handleChange = (e) => {
@@ -99,6 +109,9 @@ export default class AddApplicant extends Component {
                 <Row>
                     <div style={{ color: 'green' }}>{this.state.success === true ? ('Congratulations, your application for a loan has been successfully submitted, we will review it and get back to you soonest') :
                         ''}</div>
+					<div style={{ color: "red" }}>{this.state.errorMessage === true
+                ? "Registration Unsuccessful, try again later"
+                : ""}</div>
                     <h2>Fill the form below correctly and submit, and we will get back to you soonest.</h2>
                 </Row>
 
@@ -167,6 +180,9 @@ export default class AddApplicant extends Component {
                 </form>
                 <div style={{ color: 'green' }}>{this.state.success === true ? ('Congratulations, your application for a loan has been successfully submitted, we will review it and get back to you soonest') :
                     ''}</div>
+				<div style={{ color: "red" }}>{this.state.errorMessage === true
+                ? "Registration Unsuccessful, try again later"
+                : ""}</div>	
             </Container>
         )
     }
