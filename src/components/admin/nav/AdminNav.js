@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { firebase } from '../../../Firebase';
 
 function AdminNav() {
 
@@ -38,24 +37,10 @@ function AdminNav() {
         ))
     )
 
-    const logoutHandler = () => {
-        firebase.auth().signOut().then(() => {
-            console.log('Log out successful')
-        }, (error) => {
-            console.log('Error logging out')
-        })
-    }
-
     return (
         <div style={{marginTop: '50px'}}>
             <h1>Dashboard</h1>
             {renderItems()}
-            <Link to=''>
-                <button style={style} onClick={() => logoutHandler()}>
-                    Log out
-            </button>
-            </Link>
-
         </div>
     )
 }
