@@ -13,6 +13,7 @@ export default function(ComposedClass, reload, adminRoute) {
 
     componentDidMount() {
       axios.get("http://localhost:3000/api/auth").then(res => {
+        console.log(res.data)
         let user = res.data;
         if (!user.isAuth) {
           if (reload) {

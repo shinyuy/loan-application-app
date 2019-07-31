@@ -4,11 +4,11 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 
-export default class SingleUserAccount extends Component {
+export default class SingleAccountSavings extends Component {
 
   state = {
     data: null,
-    accountNumber: null
+    savings: null
   }
 
   componentDidMount() {
@@ -22,19 +22,28 @@ export default class SingleUserAccount extends Component {
       });
   } 
 
-  setAccountNumber = (e) => {
+  saveToAccount = (e) => {
+    var datetime = new Date();
+      console.log(this.state.savings)
+      console.log(this.state.data.data.savings);
     let id = this.props.match.params._id;
-    axios.post("http://localhost:5000/api/setAccountNumber/" + id, {
+    let savings = {
+      date: datetime,
+      amount: this.state.savings
+    }
+    this.state.data.data.savings.push(savings);
+    axios.post("http://localhost:5000/api/save/" + id, {
       firstname: this.state.data.data.firstname,
       lastname: this.state.data.data.lastname,
       email: this.state.data.data.email,
       phoneNumber: this.state.data.data.phoneNumber,
-      accountNumber: this.state.accountNumber,
-      images: this.state.data.data.images
+      accountNumber: this.state.data.data.accountNumber,
+      images: this.state.data.data.images,
+      savings: this.state.data.data.savings
     })
       .then(res => console.log(res.data));
     setTimeout(() => {
-      this.props.history.push('/admin/userAccounts');
+      this.props.history.push('/admin/savings');
     }, 2000);
   }
 
@@ -42,6 +51,7 @@ export default class SingleUserAccount extends Component {
     this.setState({
       [e.target.id]: e.target.value
     });
+    console.log(this.state)
   };
 
   render() {
@@ -54,13 +64,15 @@ export default class SingleUserAccount extends Component {
               <div>Last Name:<span className='chat'>     {this.state.data.data.lastname}</span></div><br />
               <div>Email:<span className='chat'>     {this.state.data.data.email}</span></div><br />
               <div>Phone Number:<span className='chat'>   {this.state.data.data.phoneNumber}</span></div><br />
-              <div>Set Account Number<input type='number'  value={this.state.accountNumber}
-                id="accountNumber"
-                name="accountNumber" className="form-control" onChange={this.handleChange}/></div>
+              <div>Account Number:<span className='chat'>   {this.state.data.data.accountNumber}</span></div><br />
+              <div>Savings:<span className='chat'>   {this.state.data.data.savings.amount}</span></div><br />
+              <div><input type='number'  value={this.state.savings} placeholder='Enter Amount To be Saved'
+                id="savings"
+                name="savings" className="form-control" onChange={this.handleChange}/></div>
             </Col>
             <Col xs={6} md={4}>
               <div className='wrap'>
-                <div><span className='chat'>Supporting Documents</span>:
+                <div>
                 <div>
                     
                   </div>
@@ -68,10 +80,7 @@ export default class SingleUserAccount extends Component {
               </div>
             </Col>
           </Row>
-          {
-            this.state.data.data.validated === true  ? ( <button className="btn btn-success" disabled>Validated</button>)
-            :( <button className="btn btn-primary" onClick={this.setAccountNumber}>Submit</button>)
-          }
+             <button className="btn btn-primary" onClick={this.saveToAccount}>Save</button>
          
         </Container>
       </div>

@@ -17,6 +17,8 @@ import UserDashboard from "./components/user/index";
 import Admins from "./components/admin/admins/Admins";
 import UserAccount from "./components/admin/users/UserAccount";
 import SingleUserAccount from "./components/admin/users/SingleUserAccount";
+import Savings from './components/admin/savings/Savings';
+import SingleAccountSavings from './components/admin/savings/SingleAccountSavings';
 
 const Routes = props => {
   return (
@@ -51,11 +53,21 @@ const Routes = props => {
           path="/admin/userAccounts"
           exact
           component={Auth(UserAccount, true, true)}
-        />
+        /> 
         <Route
-          path="/admin/userAccounts:_id"
+          path="/admin/userAccounts/:_id"
           exact
           component={Auth(SingleUserAccount, true, true)}
+        />
+         <Route
+          exact
+          path="/admin/savings"
+          component={Auth(Savings, true, true)}
+        />
+         <Route
+          exact
+          path="/admin/savings/:_id"
+          component={Auth(SingleAccountSavings, true, true)}
         />
         <Route
           exact

@@ -19,6 +19,7 @@ export default class Register extends Component {
         password: this.state.password
       })
       .then(res => {
+        console.log(res.data)
           if(res.data.loginSuccess){
                this.props.history.push('/user/dashboard')
           }else{

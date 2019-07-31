@@ -98,12 +98,7 @@ register = (firstname, lastname, email, phoneNumber, date, password) => {
 
 render() {
     const {
-        data,
-        firstname,
-        lastname,
-        email,
-        password,
-        phoneNumber
+        data
       } = this.state;
     return (
   <Container  style={{ paddingTop: "150px", paddingBottom: "150px" }}>
@@ -128,12 +123,12 @@ render() {
                 <td>{dat.email}</td>
                 <td>{dat.phoneNumber}</td>
                 <td>{dat.accountNumber}</td>
-                <td> <button
+               {dat.accountNumber === null ? (<td> <button
                   style={{
                     backgroundColor: '#e1ddc3',
                     cursor: 'pointer',
                     borderRadius: '10%'
-                  }}><Link to={'/admin/userAccounts/' + dat._id}>Set Account Number</Link></button></td>
+                  }}><Link to={'/admin/userAccounts/' + dat._id}>Set Account Number</Link></button></td>): ''}
               </tr>
             )
           })

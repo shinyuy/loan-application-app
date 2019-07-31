@@ -22,6 +22,10 @@ const admin = [
     linkTo: "/admin/userAccounts"
   },
   {
+    name: "Customer Savings",
+    linkTo: "/admin/savings"
+  },
+  {
     name: "Applicants",
     linkTo: "/dashboard"
   },
