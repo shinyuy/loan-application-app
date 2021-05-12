@@ -8,7 +8,7 @@
     "@fortawesome/react-fontawesome": "0.0.20",
     "@material-ui/core": "^3.9.3",
     "axios": "^0.18.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "firebase": "^5.9.0",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.6",
